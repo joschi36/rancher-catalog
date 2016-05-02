@@ -1,0 +1,29 @@
+drone:
+  image: drone/drone:0.5.0
+  environment:
+    DRONE_SERVER: ${DRONE_SERVER}
+    DRONE_TOKEN: ${DRONE_TOKEN}
+    DRONE_DEBUG: ${DRONE_DEBUG}
+    DRONE_BACKOFF: ${DRONE_BACKOFF}
+    DRONE_PLUGIN_PULL: ${DRONE_PLUGIN_PULL}
+    DRONE_PLUGIN_NAMESPACE: ${DRONE_PLUGIN_NAMESPACE}
+    DRONE_PLUGIN_WHITELIST: ${DRONE_PLUGIN_WHITELIST}
+    DRONE_PLUGIN_PRIVILEGED: ${DRONE_PLUGIN_PRIVILEGED}
+    DRONE_PLUGIN_NETRC: ${DRONE_PLUGIN_NETRC}
+    DOCKER_HOST: ${DOCKER_HOST}
+    DOCKER_TLS_VERIFY: ${DOCKER_TLS_VERIFY}
+    DOCKER_CERT_PATH: ${DOCKER_TLS_VERIFY}
+    DOCKER_MAX_PROCS: ${DOCKER_MAX_PROCS}
+    DOCKER_OS: ${DOCKER_OS}
+    DOCKER_ARCH: ${DOCKER_ARCH}
+    HTTP_PROXY: ${HTTP_PROXY}
+    HTTPS_PROXY: ${HTTPS_PROXY}
+    NO_PROXY: ${NO_PROXY}
+    http_proxy: ${HTTP_PROXY}
+    https_proxy: ${HTTPS_PROXY}
+    no_proxy: ${NO_PROXY}
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  entrypoint: /drone agent
+  labels:
+    io.rancher.container.pull_image: always

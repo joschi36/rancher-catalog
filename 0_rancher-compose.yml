@@ -1,0 +1,128 @@
+.catalog:
+  name: Drone
+  version: 0.5.0
+  description: Drone CI Build Agent
+  uuid: drone-0.5
+  minimum_rancher_version: v0.51.0
+  questions:
+    - variable: DRONE_SERVER
+      label: Drone server address
+      description: |
+        Drone server address. This is just the URL to the server.
+      required: true
+      type: string
+    - variable: DRONE_TOKEN
+      label: Drone server token
+      description: |
+        The generated token for the Drone server. Used to verify that the
+        agents can connect and execute builds.
+      required: true
+      type: string
+    - variable: DRONE_DEBUG
+      label: Debug mode
+      description: |
+        Runs the agent in debug mode. This will result in more logging being
+        produced by the agent.
+      required: true
+      type: boolean
+      default: false
+    - variable: DRONE_BACKOFF
+      label: Backoff time
+      description: |
+        The backoff time to reconnect agents when their connection to the
+        central server is interrupted.
+      required: false
+      type: string
+    - variable: DRONE_PLUGIN_PULL
+      label: Update plugins automatically
+      description: |
+        Whether plugins are pulled automatically by the agent.
+      type: boolean
+      default: true
+    - variable: DRONE_PLUGIN_NAMESPACE
+      label: Plugin namespace in DockerHub
+      description: Plugin namespace in DockerHub.
+      default: plugins
+      type: string
+    - variable: DRONE_PLUGIN_WHITELIST
+      label: Plugin whitelist
+      description: |
+        Plugin whitelist. Add to the string to include additional locations of
+        plugins.
+      type: string
+      default: "plugins/*"
+    - variable: DRONE_PLUGIN_PRIVILEGED
+      label: Plugins run in priviledged mode
+      description: |
+        Whether plugins are granted priviledged access.
+      type: boolean
+      default: false
+    - variable: DRONE_PLUGIN_NETRC
+      label: Plugins granted netrc access
+      description: |
+        Whether plugins are granted access to the netrc file.
+      type: boolean
+      default: true
+    - variable: DOCKER_HOST
+      label: Docker host address
+      description: Docker host address
+      type: string
+    - variable: DOCKER_TLS_VERIFY
+      label: Docker requires TLS verification
+      description: |
+        Whether Docker requires TLS verification.
+      type: boolean
+      default: true
+    - variable: DOCKER_CERT_PATH
+      label: Docker certificate path.
+      description: Docker certificate path.
+      type: string
+    - variable: DOCKER_MAX_PROCS
+      label: Docker concurrent build processes.
+      description: |
+        The number of concurrent builds run by the agent.
+      type: int
+      default: 1
+    - variable: DOCKER_OS
+      label: Docker operating system
+      description: |
+        The operating system in use.
+      type: enum
+      options:
+        - linux
+        - android
+        - freebsd
+        - solaris
+        - windows
+      default: linux
+    - variable: DOCKER_ARCH
+      label: Docker architecture
+      description: |
+        The CPU architecture of the host.
+      type: enum
+      options:
+        - amd64
+        - arm
+        - arm64
+      default: amd64
+    - variable: HTTP_PROXY
+      label: The proxy for HTTP connections.
+      description: |
+        The proxy for HTTP connections. Used when Drone is running behind a
+        firewall.
+      required: false
+      type: string
+    - variable: HTTPS_PROXY
+      label: The proxy for HTTPS connections.
+      description: |
+        The proxy for HTTPS connections. Used when Drone is running behind a
+        firewall.
+      required: false
+      type: string
+    - variable: NO_PROXY
+      label: The sites to not proxy.
+      description: |
+        The sites to not proxy. Used when Drone is running behind a
+        firewall.
+      required: false
+      type: string
