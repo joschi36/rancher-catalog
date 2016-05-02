@@ -24,6 +24,6 @@ drone:
     no_proxy: ${NO_PROXY}
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-  entrypoint: /drone agent
+  command: agent
   labels:
     io.rancher.container.pull_image: always
