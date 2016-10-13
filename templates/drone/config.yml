@@ -1,5 +1,5 @@
-name: Drone Agent
+name: Drone Server
 description: |
-  Drone CI Build Agent.
+  Drone CI Server.
 version: 0.5.0
 category: Continuous Integration
